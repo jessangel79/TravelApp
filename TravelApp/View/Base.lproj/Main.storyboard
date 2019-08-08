@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qWw-oh-eVj">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Tab Bar Controller-->
+        <scene sceneID="VQp-a1-Fcb">
+            <objects>
+                <tabBarController id="qWw-oh-eVj" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="t4N-2i-iYe">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="hLO-4a-DSM" kind="relationship" relationship="viewControllers" id="mIT-nL-fig"/>
+                        <segue destination="yw1-G4-SuB" kind="relationship" relationship="viewControllers" id="ngl-so-bkv"/>
+                        <segue destination="oKR-xo-sL2" kind="relationship" relationship="viewControllers" id="eXt-A1-7j5"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VQ9-pg-eod" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2106" y="662"/>
+        </scene>
+        <!--Translation-->
+        <scene sceneID="MPO-X6-9IT">
+            <objects>
+                <navigationController id="yw1-G4-SuB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Translation" image="Translation" id="tfQ-Px-4an"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cSc-vy-YXJ">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TzI-6B-x39" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1168" y="661"/>
+        </scene>
+        <!--Weather-->
+        <scene sceneID="kLy-as-wCl">
+            <objects>
+                <navigationController id="oKR-xo-sL2" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Weather" image="Weather" id="YMc-Us-k9Z"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="mlK-zV-5Gg">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nx1-x5-LVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1168" y="1405"/>
+        </scene>
+        <!--Exchange Rate-->
+        <scene sceneID="a2O-CT-2wQ">
+            <objects>
+                <navigationController id="hLO-4a-DSM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Exchange Rate" image="Exchange" id="dnB-0U-Wfc"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vwv-jM-1sn">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="zo4-Q8-mCC" kind="relationship" relationship="rootViewController" id="2iF-ck-t9M"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="TeV-WP-qk3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1168" y="-25"/>
+        </scene>
+        <!--Exchange Form View Controller-->
+        <scene sceneID="MXS-Ln-nf2">
+            <objects>
+                <viewController id="zo4-Q8-mCC" customClass="ExchangeFormViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5Be-cf-AEV">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GVn-sm-gwo">
+                                <rect key="frame" x="10" y="446.5" width="300" height="57.5"/>
+                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="GVn-sm-gwo" secondAttribute="height" multiplier="330:63" id="W69-0D-EOP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="28"/>
+                                <state key="normal" title="Convert amount">
+                                    <color key="titleColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapConvertButton" destination="zo4-Q8-mCC" eventType="touchUpInside" id="g9b-kY-Djx"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="el7-87-lNv" userLabel="Amount Stack View">
+                                <rect key="frame" x="10" y="79" width="300" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Amount in €" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GwJ-IT-gCz">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="30"/>
+                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="1.260046" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ehW-OW-DKv">
+                                        <rect key="frame" x="151" y="0.0" width="149" height="30"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="19"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="decimalPad" keyboardAppearance="alert" returnKeyType="continue"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="1aV-Wy-lJF" userLabel="Currency Stack View">
+                                <rect key="frame" x="10" y="119" width="300" height="216"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the currency" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ozs-EB-1cy">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="216"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bJu-g8-OO9">
+                                        <rect key="frame" x="151" y="0.0" width="149" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="zo4-Q8-mCC" id="xeu-df-adO"/>
+                                            <outlet property="delegate" destination="zo4-Q8-mCC" id="oIH-De-YnD"/>
+                                        </connections>
+                                    </pickerView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="bJu-g8-OO9" firstAttribute="height" secondItem="Ozs-EB-1cy" secondAttribute="height" id="dQK-kw-1fk"/>
+                                </constraints>
+                            </stackView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="c7t-d3-IQl">
+                                <rect key="frame" x="141.5" y="457" width="37" height="37"/>
+                                <color key="color" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="z3R-z1-Fdb" userLabel="Converted Stack View">
+                                <rect key="frame" x="10" y="350" width="300" height="61"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get the converted amount" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ep-fb-iPL">
+                                        <rect key="frame" x="0.0" y="0.0" width="149" height="61"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="16"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s2B-Fs-Cu2">
+                                        <rect key="frame" x="151" y="0.0" width="149" height="61"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="19"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="s2B-Fs-Cu2" firstAttribute="height" secondItem="4ep-fb-iPL" secondAttribute="height" id="cPi-xJ-UUW"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1aV-Wy-lJF" firstAttribute="top" secondItem="el7-87-lNv" secondAttribute="bottom" constant="10" id="6TI-0h-RFi"/>
+                            <constraint firstItem="z3R-z1-Fdb" firstAttribute="leading" secondItem="bH4-VD-i1e" secondAttribute="leading" constant="10" id="8Gr-6G-2qj"/>
+                            <constraint firstItem="c7t-d3-IQl" firstAttribute="centerY" secondItem="GVn-sm-gwo" secondAttribute="centerY" id="8Sc-or-AGn"/>
+                            <constraint firstItem="el7-87-lNv" firstAttribute="leading" secondItem="bH4-VD-i1e" secondAttribute="leading" constant="10" id="8Zb-ja-MPx"/>
+                            <constraint firstItem="1aV-Wy-lJF" firstAttribute="leading" secondItem="bH4-VD-i1e" secondAttribute="leading" constant="10" id="EuI-Nd-Erk"/>
+                            <constraint firstAttribute="trailing" secondItem="1aV-Wy-lJF" secondAttribute="trailing" constant="10" id="PAI-qL-AOy"/>
+                            <constraint firstItem="el7-87-lNv" firstAttribute="top" secondItem="bH4-VD-i1e" secondAttribute="top" constant="15" id="PYb-bJ-CgA"/>
+                            <constraint firstItem="GVn-sm-gwo" firstAttribute="centerX" secondItem="5Be-cf-AEV" secondAttribute="centerX" id="Q6q-rz-Q4n"/>
+                            <constraint firstItem="GVn-sm-gwo" firstAttribute="leading" secondItem="bH4-VD-i1e" secondAttribute="leading" constant="10" id="Uau-Md-KZX"/>
+                            <constraint firstItem="bH4-VD-i1e" firstAttribute="trailing" secondItem="el7-87-lNv" secondAttribute="trailing" constant="10" id="ZfN-Kt-Jcp"/>
+                            <constraint firstAttribute="trailing" secondItem="z3R-z1-Fdb" secondAttribute="trailing" constant="10" id="gAz-MS-Ihf"/>
+                            <constraint firstItem="c7t-d3-IQl" firstAttribute="centerX" secondItem="GVn-sm-gwo" secondAttribute="centerX" id="gEn-hL-id2"/>
+                            <constraint firstItem="bH4-VD-i1e" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="GVn-sm-gwo" secondAttribute="trailing" constant="10" id="gj0-9N-jjf"/>
+                            <constraint firstItem="bH4-VD-i1e" firstAttribute="bottom" secondItem="GVn-sm-gwo" secondAttribute="bottom" constant="15" id="wdv-ZS-sYJ"/>
+                            <constraint firstItem="z3R-z1-Fdb" firstAttribute="top" secondItem="1aV-Wy-lJF" secondAttribute="bottom" constant="15" id="zlL-7x-I8A"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bH4-VD-i1e"/>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="A06-3E-TT4" appends="YES" id="x0X-XX-QpH"/>
+                        </connections>
+                    </view>
+                    <navigationItem key="navigationItem" id="mQv-0a-qYG"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="c7t-d3-IQl" id="41p-2o-CfJ"/>
+                        <outlet property="amountTextField" destination="ehW-OW-DKv" id="85w-SD-8nu"/>
+                        <outlet property="convertButton" destination="GVn-sm-gwo" id="SJl-Mm-odi"/>
+                        <outlet property="convertedAmountLabel" destination="s2B-Fs-Cu2" id="e1b-S3-EcW"/>
+                        <outlet property="currencyPickerViewer" destination="bJu-g8-OO9" id="fvm-Os-kJk"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ok1-lU-h6q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="A06-3E-TT4">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="zo4-Q8-mCC" id="vUO-hf-FIl"/>
+                    </connections>
+                </tapGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="-433" y="-25"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Exchange" width="25" height="25"/>
+        <image name="Translation" width="25" height="25"/>
+        <image name="Weather" width="25" height="25"/>
+    </resources>
+    <color key="tintColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+</document>
