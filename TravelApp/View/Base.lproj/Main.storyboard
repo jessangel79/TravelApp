@@ -44,6 +44,185 @@
             </objects>
             <point key="canvasLocation" x="-1168" y="661"/>
         </scene>
+        <!--Weather Form View Controller-->
+        <scene sceneID="Des-2m-0yS">
+            <objects>
+                <viewController id="cfC-kg-AUe" customClass="WeatherFormViewController" customModule="TravelApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="3DS-sQ-yfn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qxL-Zi-JPf" userLabel="NY Stack View">
+                                <rect key="frame" x="10" y="66" width="300" height="159"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New York" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxR-rS-MkE">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="77"/>
+                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="25"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="18" translatesAutoresizingMaskIntoConstraints="NO" id="kgY-NB-nZo" userLabel="Display NY Stack View">
+                                        <rect key="frame" x="0.0" y="82" width="300" height="77"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="Hea-d5-c5r">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="19"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yib-Ty-9Ne">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="19"/>
+                                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1r-e1-Ix9">
+                                                        <rect key="frame" x="160" y="0.0" width="140" height="19"/>
+                                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="zKA-uw-XT7">
+                                                <rect key="frame" x="0.0" y="37" width="300" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ms2-V6-Eae">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wwg-Jm-6Bh">
+                                                        <rect key="frame" x="160" y="0.0" width="140" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="sb6-Gu-hMl"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="HjK-AI-odd" userLabel="Auvers Stack View">
+                                <rect key="frame" x="10" y="240" width="300" height="164"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Auvers-Sur-Oise" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkK-cS-uMy">
+                                        <rect key="frame" x="0.0" y="0.0" width="300" height="78"/>
+                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="25"/>
+                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="19" translatesAutoresizingMaskIntoConstraints="NO" id="ee7-p2-xol" userLabel="Display Auvers Stack View">
+                                        <rect key="frame" x="0.0" y="86" width="300" height="78"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="QO5-yf-S9A">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="19"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Temperature" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8qv-JR-J6Y">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="19"/>
+                                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Condition" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L46-bf-y4N">
+                                                        <rect key="frame" x="160" y="0.0" width="140" height="19"/>
+                                                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="RwV-Tx-eKO">
+                                                <rect key="frame" x="0.0" y="38" width="300" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p06-Mv-Kv0">
+                                                        <rect key="frame" x="0.0" y="0.0" width="140" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="20"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kST-Ni-02Y">
+                                                        <rect key="frame" x="160" y="0.0" width="140" height="40"/>
+                                                        <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="15"/>
+                                                        <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="56w-xO-gqj"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W9R-HI-hsd">
+                                <rect key="frame" x="10" y="447" width="300" height="57"/>
+                                <color key="backgroundColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="W9R-HI-hsd" secondAttribute="height" multiplier="100:19" id="KNW-pr-zgb"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="25"/>
+                                <state key="normal" title="Update Weather">
+                                    <color key="titleColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                </state>
+                                <connections>
+                                    <action selector="tapUpdateWeatherButton" destination="cfC-kg-AUe" eventType="touchUpInside" id="BJq-PZ-gFA"/>
+                                </connections>
+                            </button>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="aid-M5-vM2">
+                                <rect key="frame" x="141.5" y="457" width="37" height="37"/>
+                                <color key="color" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <color key="tintColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="W9R-HI-hsd" firstAttribute="centerX" secondItem="3DS-sQ-yfn" secondAttribute="centerX" id="1W1-Xb-bEb"/>
+                            <constraint firstItem="qxL-Zi-JPf" firstAttribute="top" secondItem="Yuf-9P-9Qt" secondAttribute="top" constant="2" id="4e8-LJ-pXT"/>
+                            <constraint firstItem="qxL-Zi-JPf" firstAttribute="centerX" secondItem="3DS-sQ-yfn" secondAttribute="centerX" id="DN8-U8-z03"/>
+                            <constraint firstItem="Yuf-9P-9Qt" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="W9R-HI-hsd" secondAttribute="trailing" constant="10" id="FUx-zg-8ci"/>
+                            <constraint firstItem="Yuf-9P-9Qt" firstAttribute="trailing" secondItem="qxL-Zi-JPf" secondAttribute="trailing" constant="10" id="IPd-xI-Qim"/>
+                            <constraint firstItem="HjK-AI-odd" firstAttribute="centerX" secondItem="3DS-sQ-yfn" secondAttribute="centerX" id="J1h-6M-dKW"/>
+                            <constraint firstItem="W9R-HI-hsd" firstAttribute="leading" secondItem="Yuf-9P-9Qt" secondAttribute="leading" constant="10" id="K74-vA-8Wh"/>
+                            <constraint firstItem="Yuf-9P-9Qt" firstAttribute="trailing" secondItem="HjK-AI-odd" secondAttribute="trailing" constant="10" id="LZk-vu-Pon"/>
+                            <constraint firstItem="aid-M5-vM2" firstAttribute="centerY" secondItem="W9R-HI-hsd" secondAttribute="centerY" id="SMh-b5-0P0"/>
+                            <constraint firstItem="Yuf-9P-9Qt" firstAttribute="bottom" secondItem="W9R-HI-hsd" secondAttribute="bottom" constant="15" id="Vhe-Ex-c2q"/>
+                            <constraint firstItem="aid-M5-vM2" firstAttribute="centerX" secondItem="W9R-HI-hsd" secondAttribute="centerX" id="jBD-O5-41L"/>
+                            <constraint firstItem="qxL-Zi-JPf" firstAttribute="leading" secondItem="Yuf-9P-9Qt" secondAttribute="leading" constant="10" id="tOp-Py-F9G"/>
+                            <constraint firstItem="HjK-AI-odd" firstAttribute="top" secondItem="qxL-Zi-JPf" secondAttribute="bottom" constant="15" id="vjz-3Y-R9I"/>
+                            <constraint firstItem="HjK-AI-odd" firstAttribute="leading" secondItem="Yuf-9P-9Qt" secondAttribute="leading" constant="10" id="wTr-M2-UBb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Yuf-9P-9Qt"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="q9l-uh-GL9"/>
+                    <connections>
+                        <outlet property="activityIndicator" destination="aid-M5-vM2" id="fmc-5K-yCV"/>
+                        <outlet property="cityAuversLabel" destination="CkK-cS-uMy" id="RPm-7z-b4K"/>
+                        <outlet property="cityNYLabel" destination="oxR-rS-MkE" id="Efu-gK-oeh"/>
+                        <outlet property="conditionAuversLabel" destination="kST-Ni-02Y" id="C76-4f-Qcd"/>
+                        <outlet property="conditionNYLabel" destination="Wwg-Jm-6Bh" id="NrY-pW-ihz"/>
+                        <outlet property="temperatureAuversLabel" destination="p06-Mv-Kv0" id="qvA-B9-p8Z"/>
+                        <outlet property="temperatureNYLabel" destination="Ms2-V6-Eae" id="zi1-6P-Grf"/>
+                        <outlet property="updateWeatherButton" destination="W9R-HI-hsd" id="4Tq-uZ-aJl"/>
+                        <outletCollection property="allLabels" destination="Ms2-V6-Eae" collectionClass="NSMutableArray" id="sLh-x4-Hmt"/>
+                        <outletCollection property="allLabels" destination="Wwg-Jm-6Bh" collectionClass="NSMutableArray" id="7Ol-jD-RtO"/>
+                        <outletCollection property="allLabels" destination="p06-Mv-Kv0" collectionClass="NSMutableArray" id="agA-F2-bmb"/>
+                        <outletCollection property="allLabels" destination="kST-Ni-02Y" collectionClass="NSMutableArray" id="WcD-YW-beo"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nWk-px-RXP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-433.125" y="1404.9295774647887"/>
+        </scene>
         <!--Weather-->
         <scene sceneID="kLy-as-wCl">
             <objects>
@@ -53,6 +232,9 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
+                    <connections>
+                        <segue destination="cfC-kg-AUe" kind="relationship" relationship="rootViewController" id="E5Y-3y-Sem"/>
+                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nx1-x5-LVt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -93,7 +275,7 @@
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GVn-sm-gwo" secondAttribute="height" multiplier="330:63" id="W69-0D-EOP"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="28"/>
+                                <fontDescription key="fontDescription" name="Chalkduster" family="Chalkduster" pointSize="25"/>
                                 <state key="normal" title="Convert amount">
                                     <color key="titleColor" red="0.70336943860000001" green="0.8711062074" blue="0.8313707709" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 </state>

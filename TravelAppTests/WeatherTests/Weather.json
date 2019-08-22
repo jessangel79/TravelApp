@@ -1,0 +1,81 @@
+{
+    "cnt": 2,
+    "list": [
+        {
+            "coord": {
+                "lon": 2.17,
+                "lat": 49.07
+            },
+            "sys": {
+                "country": "FR",
+                "timezone": 7200,
+                "sunrise": 1566449580,
+                "sunset": 1566500161
+            },
+            "weather": [
+                {
+                    "id": 800,
+                    "main": "Clear",
+                    "description": "clear sky",
+                    "icon": "01d"
+                }
+            ],
+            "main": {
+                "temp": 26.38,
+                "pressure": 1024,
+                "humidity": 29,
+                "temp_min": 25,
+                "temp_max": 27.78
+            },
+            "visibility": 10000,
+            "wind": {
+                "speed": 2.1,
+                "deg": 20
+            },
+            "clouds": {
+                "all": 0
+            },
+            "dt": 1566487059,
+            "id": 3035864,
+            "name": "Auvers-sur-Oise"
+        },
+        {
+            "coord": {
+                "lon": -75.5,
+                "lat": 43
+            },
+            "sys": {
+                "country": "US",
+                "timezone": -14400,
+                "sunrise": 1566468926,
+                "sunset": 1566518090
+            },
+            "weather": [
+                {
+                    "id": 803,
+                    "main": "Clouds",
+                    "description": "broken clouds",
+                    "icon": "04d"
+                }
+            ],
+            "main": {
+                "temp": 22.57,
+                "pressure": 1014,
+                "humidity": 49,
+                "temp_min": 20.56,
+                "temp_max": 24.44
+            },
+            "visibility": 16093,
+            "wind": {
+                "speed": 5.1,
+                "deg": 290
+            },
+            "clouds": {
+                "all": 75
+            },
+            "dt": 1566486959,
+            "id": 5128638,
+            "name": "New York"
+        }
+    ]
+}

@@ -11,28 +11,36 @@ import Foundation
 class CurrencyService {
 
     // MARK: Vars
-    static var shared = CurrencyService()
-    private init() {}
+//    static var shared = CurrencyService()
+//    private init() {}
     private var task: URLSessionDataTask?
     
-    private static let currencyUrl = URL(string:
-        "http://data.fixer.io/api/symbols?access_key=1398c31984a68b64b7fea3bcb147c54d")!
+    private var session: URLSession
     
-    private static let rateUrl = URL(string:
-        "http://data.fixer.io/api/latest?access_key=1398c31984a68b64b7fea3bcb147c54d")!
-    
-    private var session = URLSession(configuration: .default)
-    
-    init(session: URLSession) {
+    init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
     
+//    private static let currencyUrl = URL(string:
+//        "http://data.fixer.io/api/symbols?access_key=1398c31984a68b64b7fea3bcb147c54d")!
+//
+//    private static let rateUrl = URL(string:
+//        "http://data.fixer.io/api/latest?access_key=1398c31984a68b64b7fea3bcb147c54d")!
+    
+    private let currencyUrl = "http://data.fixer.io/api/symbols?access_key="
+    private let rateUrl = "http://data.fixer.io/api/latest?access_key="
+    private let keyExchange = valueForAPIKey(named: "API_Fixer")
+    
     // MARK: - Methods
     func getCurrency(callBack: @escaping (Bool, [String]?) -> Void) {
+        guard let url = URL(string: currencyUrl + keyExchange) else {
+            callBack(false, nil)
+            return
+        }
 
         task?.cancel()
         
-        task = session.dataTask(with: CurrencyService.currencyUrl) { (data, response, error) in
+        task = session.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callBack(false, nil)
@@ -56,10 +64,14 @@ class CurrencyService {
     }
     
     func getRate(symbol: String, callBack: @escaping (Bool, Double?) -> Void) {
+        guard let url = URL(string: rateUrl + keyExchange) else {
+            callBack(false, nil)
+            return
+        }
         
         task?.cancel()
         
-        task = session.dataTask(with: CurrencyService.rateUrl) { (data, response, error) in
+        task = session.dataTask(with: url) { (data, response, error) in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callBack(false, nil)

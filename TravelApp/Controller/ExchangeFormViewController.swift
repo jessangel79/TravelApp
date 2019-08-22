@@ -13,6 +13,7 @@ class ExchangeFormViewController: UIViewController {
     // MARK: - Properties
     var symbols = [String]()
     var symbolPicked = String()
+    let currencyService = CurrencyService()
     
     // MARK: - Outlets
     @IBOutlet weak var amountTextField: UITextField!
@@ -53,7 +54,7 @@ extension ExchangeFormViewController {
     
     // MARK: - Methods
     private func getCurrency() {
-        CurrencyService.shared.getCurrency { (success, symbols) in
+        currencyService.getCurrency { (success, symbols) in
             self.toggleActivityIndicator(shown: false)
             if success, let symbols = symbols {
                 self.orderSymbolsByAlpha(symbols: symbols)
@@ -71,7 +72,7 @@ extension ExchangeFormViewController {
         self.symbolPicked = currency
     }
     
-    // MARK: - Reorganize the list in alphabetical order
+    // Reorganize the list in alphabetical order
     private func orderSymbolsByAlpha(symbols: [String]) {
         let symbolA = symbols.filter({ Array($0)[0] == "A" })
         let symbolU = symbols.filter({ Array($0)[0] == "U" })
@@ -81,7 +82,7 @@ extension ExchangeFormViewController {
     }
     
     private func getRate() {
-        CurrencyService.shared.getRate(symbol: symbolPicked) { (success, rate) in
+        currencyService.getRate(symbol: symbolPicked) { (success, rate) in
             self.toggleActivityIndicator(shown: false)
             if success, let rate = rate {
                 guard let amount = self.amountTextField?.text else { return }
@@ -100,6 +101,7 @@ extension ExchangeFormViewController {
         convertButton.isHidden = shown
     }
     
+    // Custom label convertedAmount
     private func customAmountLabel() {
         convertedAmountLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         convertedAmountLabel.layer.cornerRadius = 10
@@ -107,12 +109,14 @@ extension ExchangeFormViewController {
         convertedAmountLabel.layer.shadowOpacity = 0.8
     }
     
+    // Custom button convert
     private func customConvertButton() {
         convertButton.layer.cornerRadius = 10
         convertButton.layer.shadowColor = UIColor.black.cgColor
         convertButton.layer.shadowOpacity = 0.8
     }
     
+    // Alert message to user
     private func presentAlert(message: String) {
         let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
