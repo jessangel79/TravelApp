@@ -37,14 +37,8 @@ class FakeResponseData {
         return try? Data(contentsOf: url)
     }
     
-    // Incorrect data for the method getCurrency
-    static let currencyIncorrectData = "error".data(using: .utf8)!
-    
-    // Incorrect data for the method getRate
-    static let ratesIncorrectData = "12.457".data(using: .utf8)!
-    
-    // Incorrect data for the method getWeather
-    static let weatherIncorrectData = "error".data(using: .utf8)!
+    // Incorrect data for all JSON
+    static let incorrectData = "error".data(using: .utf8)!
     
     // MARK: - Response
     static let responseOK = HTTPURLResponse(

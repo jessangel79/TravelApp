@@ -46,8 +46,7 @@ extension ExchangeFormViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customAmountLabel()
-        customConvertButton()
+        customInterface()
         currencyPickerViewer.isHidden = true
         getCurrency()
     }
@@ -101,6 +100,13 @@ extension ExchangeFormViewController {
         convertButton.isHidden = shown
     }
     
+    // Custom inteface
+    private func customInterface() {
+        customAmountLabel()
+        customAmountTextField()
+        customConvertButton()
+    }
+    
     // Custom label convertedAmount
     private func customAmountLabel() {
         convertedAmountLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -114,6 +120,14 @@ extension ExchangeFormViewController {
         convertButton.layer.cornerRadius = 10
         convertButton.layer.shadowColor = UIColor.black.cgColor
         convertButton.layer.shadowOpacity = 0.8
+    }
+    
+    // Custom textField amount
+    private func customAmountTextField() {
+        amountTextField.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        amountTextField.layer.cornerRadius = 10
+        amountTextField.layer.shadowColor = UIColor.black.cgColor
+        amountTextField.layer.shadowOpacity = 0.8
     }
     
     // Alert message to user
