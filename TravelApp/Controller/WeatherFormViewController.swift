@@ -28,22 +28,23 @@ class WeatherFormViewController: UIViewController {
 // MARK: - Validate
 extension WeatherFormViewController {
     @IBAction func tapUpdateWeatherButton() {
-        toggleActivityIndicator(shown: true)
+        toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: updateWeatherButton)
         getWeather()
     }
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customUpdateWeatherButton()
-        customAllLabels()
+        customWeatherInterface(allLabels: allLabels, button: updateWeatherButton)
         getWeather()
     }
 
     // MARK: - Methods
     private func getWeather() {
         weatherService.getWeather { (success, weather) in
-            self.toggleActivityIndicator(shown: false)
+            self.toggleActivityIndicator(shown: false,
+                                         activityIndicator: self.activityIndicator,
+                                         validateButton: self.updateWeatherButton)
             if success, let weather = weather {
                 print(weather)
                 self.updateWeather(weatherUpdated: weather)
@@ -87,34 +88,4 @@ extension WeatherFormViewController {
         weatherTemp(list: weatherAuvers, tempLabel: temperatureAuversLabel)
         weatherCityName(list: weatherAuvers, cityNameLabel: cityAuversLabel)
     }
-    
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        updateWeatherButton.isHidden = shown
-    }
-    // Custom button updateWeather
-    private func customUpdateWeatherButton() {
-        updateWeatherButton.layer.cornerRadius = 10
-        updateWeatherButton.layer.shadowColor = UIColor.black.cgColor
-        updateWeatherButton.layer.shadowOpacity = 0.8
-    }
-    
-    // Custom all labels
-    private func customAllLabels() {
-        for label in allLabels {
-            label.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-            label.layer.cornerRadius = 10
-            label.layer.shadowColor = UIColor.black.cgColor
-            label.layer.shadowOpacity = 0.8
-        }
-    }
-    
-    // Alert message to user
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
-    }
-    
 }

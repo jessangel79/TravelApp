@@ -28,17 +28,15 @@ extension ExchangeFormViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         amountTextField.resignFirstResponder()
     }
-//    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//        amountTextField.resignFirstResponder()
-//        return true
-//    }
 }
 
 // MARK: - Validate
 extension ExchangeFormViewController {
     
     @IBAction func tapConvertButton() {
-        toggleActivityIndicator(shown: true)
+        toggleActivityIndicator(shown: true,
+                                activityIndicator: activityIndicator,
+                                validateButton: convertButton)
         symbolSelected()
         getRate()
     }
@@ -46,7 +44,7 @@ extension ExchangeFormViewController {
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customInterface()
+        customInterface(label: convertedAmountLabel, textField: amountTextField, button: convertButton)
         currencyPickerViewer.isHidden = true
         getCurrency()
     }
@@ -54,7 +52,9 @@ extension ExchangeFormViewController {
     // MARK: - Methods
     private func getCurrency() {
         currencyService.getCurrency { (success, symbols) in
-            self.toggleActivityIndicator(shown: false)
+            self.toggleActivityIndicator(shown: false,
+                                         activityIndicator: self.activityIndicator,
+                                         validateButton: self.convertButton)
             if success, let symbols = symbols {
                 self.orderSymbolsByAlpha(symbols: symbols)
             } else {
@@ -82,7 +82,9 @@ extension ExchangeFormViewController {
     
     private func getRate() {
         currencyService.getRate(symbol: symbolPicked) { (success, rate) in
-            self.toggleActivityIndicator(shown: false)
+            self.toggleActivityIndicator(shown: false,
+                                         activityIndicator: self.activityIndicator,
+                                         validateButton: self.convertButton)
             if success, let rate = rate {
                 guard let amount = self.amountTextField?.text else { return }
                 guard let doubleAmount = Double(amount) else { return }
@@ -93,49 +95,6 @@ extension ExchangeFormViewController {
                 self.presentAlert(message: "The exchange rate download failed.")
             }
         }
-    }
-    
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        convertButton.isHidden = shown
-    }
-    
-    // Custom inteface
-    private func customInterface() {
-        customAmountLabel()
-        customAmountTextField()
-        customConvertButton()
-    }
-    
-    // Custom label convertedAmount
-    private func customAmountLabel() {
-        convertedAmountLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        convertedAmountLabel.layer.cornerRadius = 10
-        convertedAmountLabel.layer.shadowColor = UIColor.black.cgColor
-        convertedAmountLabel.layer.shadowOpacity = 0.8
-    }
-    
-    // Custom button convert
-    private func customConvertButton() {
-        convertButton.layer.cornerRadius = 10
-        convertButton.layer.shadowColor = UIColor.black.cgColor
-        convertButton.layer.shadowOpacity = 0.8
-    }
-    
-    // Custom textField amount
-    private func customAmountTextField() {
-        amountTextField.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        amountTextField.layer.cornerRadius = 10
-        amountTextField.layer.shadowColor = UIColor.black.cgColor
-        amountTextField.layer.shadowOpacity = 0.8
-    }
-    
-    // Alert message to user
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
     }
 }
 

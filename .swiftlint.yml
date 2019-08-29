@@ -4,11 +4,8 @@ disabled_rules: # rule identifiers to exclude from running
 excluded: # paths to ignore during linting. Takes precedence over `included`.
  - Carthage
  - Pods
- - TravelAppTests
+ - TravelAppTests/CurrencyExchangeRateTests/CurrencyServiceTestCase.swift
+
 identifier_name:
   excluded:
     - id
-
-# file_name:
-#  excluded:
-#   - CurrencyServiceTestCase.swift

@@ -11,11 +11,12 @@ import UIKit
 class TranslateFormViewController: UIViewController {
 
     // MARK: - Properties
+    let translationService = TranslationService()
     
     // MARK: - Outlets
     @IBOutlet weak var translationButton: UIButton!
-    @IBOutlet weak var frenchLabel: UILabel!
-    @IBOutlet weak var englishLabel: UILabel!
+    @IBOutlet weak var textToTranslateLabel: UILabel!
+    @IBOutlet weak var languageTranslationLabel: UILabel!
     @IBOutlet weak var translateTextField: UITextField!
     @IBOutlet weak var translationLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
@@ -23,125 +24,70 @@ class TranslateFormViewController: UIViewController {
 
 // MARK: - Keyboard
 extension TranslateFormViewController: UITextFieldDelegate {
-//    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
-//        amountTextField.resignFirstResponder()
-//    }
-    //    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    //        amountTextField.resignFirstResponder()
-    //        return true
-    //    }
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        translateTextField.resignFirstResponder()
+    }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        translateTextField.resignFirstResponder()
+        getTranslation()
+        return true
+    }
 }
 
 // MARK: - Validate
 extension TranslateFormViewController {
     @IBAction func tapTranslationButton() {
-        toggleActivityIndicator(shown: true)
-//        symbolSelected()
-//        getRate()
+        toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: translationButton)
+        getTranslation()
     }
     
     // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customInterface()
-//        currencyPickerViewer.isHidden = true
-//        getCurrency()
+        customInterface(label: translationLabel, textField: translateTextField, button: translationButton)
+        getLanguages()
     }
     
     // MARK: - Methods
-//    private func getCurrency() {
-//        currencyService.getCurrency { (success, symbols) in
-//            self.toggleActivityIndicator(shown: false)
-//            if success, let symbols = symbols {
-//                self.orderSymbolsByAlpha(symbols: symbols)
-//            } else {
-//                // display an error message
-//                self.presentAlert(message: "The symbol of currency download failed.")
-//            }
-//            self.currencyPickerViewer.isHidden = false
-//        }
-//    }
-    
-//    private func symbolSelected() {
-//        let currencyIndex = currencyPickerViewer.selectedRow(inComponent: 0)
-//        let currency = symbols[currencyIndex]
-//        self.symbolPicked = currency
-//    }
-    
-    // Reorganize the list in alphabetical order
-//    private func orderSymbolsByAlpha(symbols: [String]) {
-//        let symbolA = symbols.filter({ Array($0)[0] == "A" })
-//        let symbolU = symbols.filter({ Array($0)[0] == "U" })
-//        let symbolE = symbols.filter({ Array($0)[0] == "E" })
-//        let symbolByAlpha = symbolA + symbolE + symbolU
-//        self.symbols = symbolByAlpha.sorted()
-//    }
-    
-//    private func getRate() {
-//        currencyService.getRate(symbol: symbolPicked) { (success, rate) in
-//            self.toggleActivityIndicator(shown: false)
-//            if success, let rate = rate {
-//                guard let amount = self.amountTextField?.text else { return }
-//                guard let doubleAmount = Double(amount) else { return }
-//                let convertedAmount = rate * doubleAmount
-//                self.convertedAmountLabel.text = String(convertedAmount)
-//            } else {
-//                // display an error message
-//                self.presentAlert(message: "The exchange rate download failed.")
-//            }
-//        }
-//    }
-    
-    private func toggleActivityIndicator(shown: Bool) {
-        activityIndicator.isHidden = !shown
-        translationButton.isHidden = shown
+    func getTranslation() {
+        guard let textToTranslate = translateTextField?.text else { return }
+        
+        toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: translationButton)
+        
+        translationService.getTranslate(textToTranslate: textToTranslate) { (success, translation) in
+            self.toggleActivityIndicator(shown: false,
+                                         activityIndicator: self.activityIndicator,
+                                         validateButton: self.translationButton)
+            if success, let translation = translation {
+                print(translation)
+                self.translationLabel.text = " " + translation.data.translations[0].translatedText
+            } else {
+                self.presentAlert(message: "The translation failed.")
+            }
+        }
     }
     
-    // Custom inteface
-    private func customInterface() {
-        customTranslationLabel()
-        customTranslateTextField()
-        customTranslationButton()
+    func getLanguages() {
+        translationService.getLanguage { (success, languages) in
+            if success, let languages = languages {
+                print(languages)
+                self.updateLanguage(languages: languages)
+            } else {
+                self.presentAlert(message: "The language download failed.")
+            }
+        }
     }
     
-    // Custom label translation
-    private func customTranslationLabel() {
-        translationLabel.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        translationLabel.layer.cornerRadius = 10
-        translationLabel.layer.shadowColor = UIColor.black.cgColor
-        translationLabel.layer.shadowOpacity = 0.8
-    }
-    
-    // Custom textField translate
-    private func customTranslateTextField() {
-        translateTextField.layer.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
-        translateTextField.layer.cornerRadius = 10
-        translateTextField.layer.shadowColor = UIColor.black.cgColor
-        translateTextField.layer.shadowOpacity = 0.8
-    }
-    
-    // Custom button translation
-    private func customTranslationButton() {
-        translationButton.layer.cornerRadius = 10
-        translationButton.layer.shadowColor = UIColor.black.cgColor
-        translationButton.layer.shadowOpacity = 0.8
-    }
-    
-    // Alert message to user
-    private func presentAlert(message: String) {
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-        alert.addAction(action)
-        present(alert, animated: true, completion: nil)
+    private func updateLanguage(languages: Languages) {
+        let languages = languages.data.languages
+        for language in languages {
+            if language.language == "fr" {
+                textToTranslateLabel.text = language.name
+            } else if language.language == "en" {
+                languageTranslationLabel.text = language.name
+//            } else if language.language == "de" {
+//                languageTranslationLabel.text = language.name
+            }
+        }
     }
 }
-
-/*
- // MARK: - Navigation
- 
- // In a storyboard-based application, you will often want to do a little preparation before navigation
- override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
- // Get the new view controller using segue.destination.
- // Pass the selected object to the new view controller.
- }
- */

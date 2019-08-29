@@ -7,3 +7,16 @@
         ]
     }
 }
+
+// version with automatic detection
+
+{
+    "data": {
+        "translations": [
+            {
+                "translatedText": "Hello, it's a sunny day!",
+                "detectedSourceLanguage": "fr"
+            }
+        ]
+    }
+}

@@ -2,7 +2,7 @@
 # Created by https://www.gitignore.io/api/xcode,swift
 # Edit at https://www.gitignore.io/?templates=xcode,swift
 ApiKeys.*
-/TravelApp⁩/Supporting Files⁩/ApiKeys.plist
+# /TravelApp⁩/Supporting Files⁩/ApiKeys.plist
 ### macOS ###
 # General
 .DS_Store

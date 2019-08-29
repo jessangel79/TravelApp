@@ -51,7 +51,9 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherShouldPostFailedCallBackIfIncorrectResponse() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(data: FakeResponseData.weatherCorrectData, response: FakeResponseData.responseKO, error: nil))
+            session: URLSessionFake(data: FakeResponseData.weatherCorrectData,
+                                    response: FakeResponseData.responseKO,
+                                    error: nil))
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -69,7 +71,9 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherShouldPostFailedCallBackIfIncorrectData() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(data: FakeResponseData.incorrectData, response: FakeResponseData.responseOK, error: nil))
+            session: URLSessionFake(data: FakeResponseData.incorrectData,
+                                    response: FakeResponseData.responseOK,
+                                    error: nil))
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -88,10 +92,9 @@ class WeatherServiceTestCase: XCTestCase {
     func testGetWeatherShouldPostSuccessCallbackIfNoErrorAndCorrectData() {
         // Given
         let weatherService = WeatherService(
-            session: URLSessionFake(
-                data: FakeResponseData.weatherCorrectData,
-                response: FakeResponseData.responseOK,
-                error: nil))
+            session: URLSessionFake(data: FakeResponseData.weatherCorrectData,
+                                    response: FakeResponseData.responseOK,
+                                    error: nil))
         
         // When
         let expectation = XCTestExpectation(description: "Wait for queue change.")
@@ -120,6 +123,4 @@ class WeatherServiceTestCase: XCTestCase {
         
         wait(for: [expectation], timeout: 0.01)
     }
-
-
 }
