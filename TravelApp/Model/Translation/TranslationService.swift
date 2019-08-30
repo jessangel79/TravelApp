@@ -25,8 +25,8 @@ class TranslationService {
     private let keyTranslation = valueForAPIKey(named: "API_GoogleTranslation")
 
     // MARK: - Methods
-    func getTranslate(textToTranslate: String, callBack: @escaping (Bool, Translations?) -> Void) {
-        let request = createTranslateRequest(textToTranslate: textToTranslate)
+    func getTranslateInEnglish(textToTranslate: String, callBack: @escaping (Bool, Translations?) -> Void) {
+        let request = createTranslateRequest(textToTranslate: textToTranslate, target: "en", source: "fr")
         print(request)
         
         task?.cancel()
@@ -53,19 +53,47 @@ class TranslationService {
         task?.resume()
     }
     
-    private func createTranslateRequest(textToTranslate: String) -> URLRequest {
+    func getTranslateInFrench(textToTranslate: String, callBack: @escaping (Bool, Translations?) -> Void) {
+        let request = createTranslateRequest(textToTranslate: textToTranslate, target: "fr", source: "en")
+        print(request)
+        
+        task?.cancel()
+        
+        task = session.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                guard let data = data, error == nil else {
+                    callBack(false, nil)
+                    return
+                }
+                guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+                    callBack(false, nil)
+                    return
+                }
+                
+                // MARK: - JSON decodable
+                guard let responseJSON = try? JSONDecoder().decode(Translations.self, from: data) else {
+                    callBack(false, nil)
+                    return
+                }
+                callBack(true, responseJSON)
+            }
+        }
+        task?.resume()
+    }
+    
+    private func createTranslateRequest(textToTranslate: String, target: String, source: String) -> URLRequest {
         guard let url = URL(string: baseUrl) else {
             fatalError("Url is not found")
         }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-         let body = "key=\(keyTranslation)&source=fr&target=en&format=text&q=\(textToTranslate)"
+        let body = "key=\(keyTranslation)&source=\(source)&target=\(target)&format=text&q=\(textToTranslate)"
         request.httpBody = body.data(using: .utf8)
         
         return request
     }
-    
+        
     func getLanguage(callBack: @escaping (Bool, Languages?) -> Void) {
         guard let url = URL(string: languageUrl + keyTranslation) else {
             callBack(false, nil)

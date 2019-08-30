@@ -89,7 +89,8 @@ extension ExchangeFormViewController {
                 guard let amount = self.amountTextField?.text else { return }
                 guard let doubleAmount = Double(amount) else { return }
                 let convertedAmount = rate * doubleAmount
-                self.convertedAmountLabel.text = String(convertedAmount)
+                let convertedAmountRoundToDecimal = convertedAmount.roundToDecimal(2)
+                self.convertedAmountLabel.text = String(convertedAmountRoundToDecimal)
             } else {
                 // display an error message
                 self.presentAlert(message: "The exchange rate download failed.")

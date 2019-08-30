@@ -63,7 +63,7 @@ extension WeatherFormViewController {
     
     // get temperature
     private func weatherTemp(list: ListDecodable, tempLabel: UILabel) {
-        let weatherTemp = list.main.temp
+        let weatherTemp = Int(list.main.temp)
         let celsius = " C°"
         tempLabel.text = String(weatherTemp) + celsius
     }
