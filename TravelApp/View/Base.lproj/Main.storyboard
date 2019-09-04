@@ -69,7 +69,7 @@
                                         <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Bonjour !" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Yr-Gc-Afc">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Yr-Gc-Afc">
                                         <rect key="frame" x="0.0" y="65" width="290" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="SI0-k3-sWd"/>
@@ -99,7 +99,7 @@
                                         <color key="textColor" red="0.58188301320000002" green="0.21569153669999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Hello !" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvW-Us-ofu">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FvW-Us-ofu">
                                         <rect key="frame" x="0.0" y="57" width="290" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="LaM-sN-sOf"/>
@@ -142,7 +142,7 @@
                                     <segment title="Anglais -&gt; Français"/>
                                 </segments>
                                 <connections>
-                                    <action selector="choiceLanguageSelected:" destination="5Ki-uH-cb6" eventType="valueChanged" id="aeW-wD-TU3"/>
+                                    <action selector="selectLanguage:" destination="5Ki-uH-cb6" eventType="valueChanged" id="aeW-wD-TU3"/>
                                 </connections>
                             </segmentedControl>
                         </subviews>

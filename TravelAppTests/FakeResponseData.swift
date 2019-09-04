@@ -37,6 +37,24 @@ class FakeResponseData {
         return try? Data(contentsOf: url)
     }
     
+    // Correct data for the method getTranslation in English
+    static var translationInEnglishCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        guard let url = bundle.url(forResource: "TranslationsInEnglish", withExtension: "json") else {
+            fatalError("TranslationsInEnglish.json is not found.")
+        }
+        return try? Data(contentsOf: url)
+    }
+    
+    // Correct data for the method getLanguage
+    static var languageCorrectData: Data? {
+        let bundle = Bundle(for: FakeResponseData.self)
+        guard let url = bundle.url(forResource: "Languages", withExtension: "json") else {
+            fatalError("Languages.json is not found.")
+        }
+        return try? Data(contentsOf: url)
+    }
+    
     // Incorrect data for all JSON
     static let incorrectData = "error".data(using: .utf8)!
     

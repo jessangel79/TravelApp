@@ -18,8 +18,6 @@ class WeatherService {
         self.session = session
     }
     
-//    private let baseUrl = "http://api.openweathermap.org/data/2.5/group?id=6454886,3017208&units=metric&APPID="
-
     private let baseUrl = "http://api.openweathermap.org/data/2.5/group?id=3035864,5128638&units=metric&APPID="
     
     private let keyWeather = valueForAPIKey(named: "API_OpenWeathermap")
