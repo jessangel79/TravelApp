@@ -8,7 +8,8 @@
 
 import Foundation
 
-// MARK: - Struct for JSON
+// MARK: - Rates
+
 struct Rates: Decodable {
     let rates: [String: Double]
 }

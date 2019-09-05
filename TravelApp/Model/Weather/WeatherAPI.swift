@@ -8,10 +8,13 @@
 
 import Foundation
 
-// MARK: - Struct for JSON
+// MARK: - WeatherAPI
+
 struct WeatherAPI: Decodable {
     let list: [ListDecodable]
 }
+
+// MARK: - ListDecodable
 
 struct ListDecodable: Decodable {
     let weather: [WeatherDecodable]
@@ -19,9 +22,13 @@ struct ListDecodable: Decodable {
     let name: String
 }
 
+// MARK: - MainDecodable
+
 struct MainDecodable: Decodable {
     let temp: Double
 }
+
+// MARK: - WeatherDecodable
 
 struct WeatherDecodable: Decodable {
     let description: String

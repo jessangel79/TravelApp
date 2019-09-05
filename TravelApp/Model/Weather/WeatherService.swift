@@ -10,7 +10,8 @@ import Foundation
 
 class WeatherService {
     
-    // MARK: Vars
+    // MARK: - Vars
+    
     private var task: URLSessionDataTask?
     private var session: URLSession
     
@@ -23,11 +24,9 @@ class WeatherService {
     private let keyWeather = valueForAPIKey(named: "API_OpenWeathermap")
     
     // MARK: - Methods
+    
     func getWeather(callBack: @escaping (Bool, WeatherAPI?) -> Void) {
-        guard let url = URL(string: baseUrl + keyWeather) else {
-            callBack(false, nil)
-            return
-        }
+        guard let url = URL(string: baseUrl + keyWeather) else { return }
         
         task?.cancel()
         
@@ -42,7 +41,7 @@ class WeatherService {
                     return
                 }
                 
-                // MARK: - JSON decodable
+                // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(WeatherAPI.self, from: data) else {
                     callBack(false, nil)
                     return

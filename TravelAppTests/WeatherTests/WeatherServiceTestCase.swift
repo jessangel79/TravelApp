@@ -12,6 +12,7 @@ import XCTest
 class WeatherServiceTestCase: XCTestCase {
     
     // MARK: - Tests getWeather
+    
     func testGetWeatherShouldPostFailedCallbackIfError() {
         // Given
         let weatherService = WeatherService(

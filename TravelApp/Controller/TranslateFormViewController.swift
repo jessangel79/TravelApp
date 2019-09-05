@@ -11,23 +11,27 @@ import UIKit
 class TranslateFormViewController: UIViewController {
 
     // MARK: - Properties
-    let translationService = TranslationService()
+    
+    private let translationService = TranslationService()
     private let frenchWelcome = LanguageChosen.french.welcome()
     private let frenchLanguage = LanguageChosen.french.language()
     private let englishWelcome = LanguageChosen.english.welcome()
     private let englishLanguage = LanguageChosen.english.language()
     
     // MARK: - Outlets
+    
     @IBOutlet weak var translationButton: UIButton!
     @IBOutlet weak var textToTranslateLabel: UILabel!
     @IBOutlet weak var languageTranslationLabel: UILabel!
+    @IBOutlet weak var translationTextView: UITextView!
     @IBOutlet weak var translateTextField: UITextField!
-    @IBOutlet weak var translationLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var choiceLanguageSegmentedControl: UISegmentedControl!
+    
 }
 
 // MARK: - Keyboard
+
 extension TranslateFormViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         translateTextField.resignFirstResponder()
@@ -40,13 +44,14 @@ extension TranslateFormViewController: UITextFieldDelegate {
 }
 
 // MARK: - Validate
+
 extension TranslateFormViewController {
     @IBAction func tapTranslationButton() {
         toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: translationButton)
         choiceLanguageToTranslate()
     }
     
-    // BONUS
+    // BONUS : allowing the user to choose a translation language
     @IBAction func selectLanguage(_ sender: Any) {
         switch choiceLanguageSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -64,10 +69,11 @@ extension TranslateFormViewController {
         }
     }
     
-    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customInterface(label: translationLabel, textField: translateTextField, button: translationButton)
+        customInterfaceTranslation(textView: translationTextView,
+                                   textField: translateTextField,
+                                   button: translationButton)
         refreshText(translateBase: frenchWelcome,
                     translationBase: englishWelcome,
                     textToTranslate: frenchLanguage,
@@ -75,7 +81,8 @@ extension TranslateFormViewController {
     }
     
     // MARK: - Methods
-    // To translate french in english or english in french (BONUS)
+    
+    /// to translate french in english or english in french (BONUS)
     func getTranslation(target: String, source: String) {
         guard let textToTranslate = translateTextField?.text else { return }
         
@@ -90,14 +97,14 @@ extension TranslateFormViewController {
                                             
             if success, let translation = translation {
                 print(translation)
-                self.translationLabel.text = " " + translation.data.translations[0].translatedText
+                self.translationTextView.text = translation.data.translations[0].translatedText
             } else {
                 self.presentAlert(message: "The translation download failed.")
             }
         }
     }
     
-    // get the languages
+    /// get the languages
     func getLanguages(textToTranslate: String, translation: String) {
         translationService.getLanguage { (success, languages) in
             if success, let languages = languages {
@@ -109,7 +116,7 @@ extension TranslateFormViewController {
         }
     }
     
-    // display the languages
+    /// display the languages
     private func updateLanguage(languages: Languages, textToTranslate: String, translation: String) {
         let languages = languages.data.languages
         for language in languages {
@@ -122,8 +129,7 @@ extension TranslateFormViewController {
         }
     }
     
-    // BONUS
-    // choice the translation in english or in french
+    /// choice the translation in english or in french (BONUS)
     private func choiceLanguageToTranslate() {
         switch choiceLanguageSegmentedControl.selectedSegmentIndex {
         case 0:
@@ -135,14 +141,14 @@ extension TranslateFormViewController {
         }
     }
 
-    // Display welcome basic text and get the languages selected
+    /// display welcome basic text and get the languages selected
     private func refreshText(translateBase: String,
                              translationBase: String,
                              textToTranslate: String,
                              translation: String) {
         translateTextField.text = String()
         translateTextField.placeholder = translateBase
-        translationLabel.text = " " + translationBase
+        translationTextView.text = translationBase
         getLanguages(textToTranslate: textToTranslate, translation: translation)
     }
 }

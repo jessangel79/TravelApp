@@ -10,6 +10,7 @@ import Foundation
 
 class FakeResponseData {
     // MARK: - Data
+    
     // Correct data for the method getCurrency
     static var currencyCorrectData: Data? {
         let bundle = Bundle(for: FakeResponseData.self)
@@ -59,6 +60,7 @@ class FakeResponseData {
     static let incorrectData = "error".data(using: .utf8)!
     
     // MARK: - Response
+    
     static let responseOK = HTTPURLResponse(
         url: URL(string: "https://openclassrooms.com")!,
         statusCode: 200, httpVersion: nil, headerFields: [:])!
@@ -68,6 +70,7 @@ class FakeResponseData {
         statusCode: 500, httpVersion: nil, headerFields: [:])!
     
     // MARK: - Error
+    
     class AllError: Error {}
     static let error = AllError()
 }

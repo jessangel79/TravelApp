@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - Enumeration of the languages available
+
 enum LanguageChosen: String {
     case french = "fr"
     case english = "en"
@@ -17,9 +19,8 @@ enum LanguageChosen: String {
     }
     
     func welcome() -> String {
-        guard let languageChosen = LanguageChosen(rawValue: language()) else {
-            return ""
-        }
+        guard let languageChosen = LanguageChosen(rawValue: language()) else { return "" }
+        
         switch languageChosen {
         case .french:
             return "Bonjour !"

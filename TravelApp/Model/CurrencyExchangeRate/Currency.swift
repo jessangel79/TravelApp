@@ -8,7 +8,8 @@
 
 import Foundation
 
-// MARK: - Struct for JSON
+// MARK: - Currency
+
 struct Currency: Decodable {
     let symbols: [String: String]
 }

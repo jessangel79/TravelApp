@@ -12,6 +12,7 @@ import XCTest
 class TranslationServiceTestCase: XCTestCase {
 
     // MARK: - Tests getTranslation
+    
     func testGetTranslationShouldPostFailedCallbackIfError() {
         // Given
         let translationService = TranslationService(
@@ -25,10 +26,10 @@ class TranslationServiceTestCase: XCTestCase {
         translationService.getTranslation(textToTranslate: textToTranslate,
                                           target: target,
                                           source: source) { (success, translation) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(translation)
-            expectation.fulfill()
+                                            // Then
+                                            XCTAssertFalse(success)
+                                            XCTAssertNil(translation)
+                                            expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -47,10 +48,10 @@ class TranslationServiceTestCase: XCTestCase {
         translationService.getTranslation(textToTranslate: textToTranslate,
                                           target: target,
                                           source: source) { (success, translation) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(translation)
-            expectation.fulfill()
+                                            // Then
+                                            XCTAssertFalse(success)
+                                            XCTAssertNil(translation)
+                                            expectation.fulfill()
         }
 
         wait(for: [expectation], timeout: 0.01)
@@ -71,10 +72,10 @@ class TranslationServiceTestCase: XCTestCase {
         translationService.getTranslation(textToTranslate: textToTranslate,
                                           target: target,
                                           source: source) { (success, translation) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(translation)
-            expectation.fulfill()
+                                            // Then
+                                            XCTAssertFalse(success)
+                                            XCTAssertNil(translation)
+                                            expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -95,10 +96,10 @@ class TranslationServiceTestCase: XCTestCase {
         translationService.getTranslation(textToTranslate: textToTranslate,
                                           target: target,
                                           source: source) { (success, translation) in
-            // Then
-            XCTAssertFalse(success)
-            XCTAssertNil(translation)
-            expectation.fulfill()
+                                            // Then
+                                            XCTAssertFalse(success)
+                                            XCTAssertNil(translation)
+                                            expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 0.01)
@@ -120,19 +121,20 @@ class TranslationServiceTestCase: XCTestCase {
         translationService.getTranslation(textToTranslate: textToTranslate,
                                           target: target,
                                           source: source) { (success, translation) in
-            // Then
-            XCTAssertTrue(success)
-            XCTAssertNotNil(translation)
-            let translationTest = "A cat"
-            XCTAssertEqual(translationTest, translation?.data.translations[0].translatedText)
-            
-            expectation.fulfill()
+                                            // Then
+                                            XCTAssertTrue(success)
+                                            XCTAssertNotNil(translation)
+                                            let translationTest = "A cat"
+                                            XCTAssertEqual(translationTest,
+                                                           translation?.data.translations[0].translatedText)
+                                            expectation.fulfill()
         }
         
         wait(for: [expectation], timeout: 0.01)
     }
     
     // MARK: - Tests getLanguage
+    
     func testGetLanguageShouldPostFailedCallbackIfError() {
         // Given
         let translationService = TranslationService(
@@ -224,8 +226,8 @@ class TranslationServiceTestCase: XCTestCase {
             let languageTranslation = "en"
             var nameTextToTranslateTest = ""
             var nameTranslationTest = ""
-            let languageTextToTranslateTest = "Français"
-            let languageTranslationTest = "Anglais"
+            let languageTextToTranslateTest = "French"
+            let languageTranslationTest = "English"
             guard let languagesArray = languages?.data.languages else { return }
             for language in languagesArray {
                 if language.language == languageTextToTranslate {

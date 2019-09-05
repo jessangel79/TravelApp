@@ -11,9 +11,11 @@ import UIKit
 class WeatherFormViewController: UIViewController {
     
     // MARK: - Properties
-     let weatherService = WeatherService()
+    
+    private let weatherService = WeatherService()
     
     // MARK: - Outlets
+    
     @IBOutlet weak var updateWeatherButton: UIButton!
     @IBOutlet weak var cityAuversLabel: UILabel!
     @IBOutlet weak var temperatureAuversLabel: UILabel!
@@ -26,13 +28,13 @@ class WeatherFormViewController: UIViewController {
 }
 
 // MARK: - Validate
+
 extension WeatherFormViewController {
     @IBAction func tapUpdateWeatherButton() {
         toggleActivityIndicator(shown: true, activityIndicator: activityIndicator, validateButton: updateWeatherButton)
         getWeather()
     }
     
-    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         customWeatherInterface(allLabels: allLabels, button: updateWeatherButton)
@@ -40,6 +42,7 @@ extension WeatherFormViewController {
     }
 
     // MARK: - Methods
+    
     private func getWeather() {
         weatherService.getWeather { (success, weather) in
             self.toggleActivityIndicator(shown: false,
@@ -55,26 +58,26 @@ extension WeatherFormViewController {
         }
     }
 
-    // get description
+    /// get description
     private func weatherCondition(list: ListDecodable, conditionLabel: UILabel) {
         let weatherCondition = list.weather[0].description.localizedCapitalized
         conditionLabel.text = weatherCondition
     }
     
-    // get temperature
+    /// get temperature
     private func weatherTemp(list: ListDecodable, tempLabel: UILabel) {
         let weatherTemp = Int(list.main.temp)
         let celsius = " C°"
         tempLabel.text = String(weatherTemp) + celsius
     }
     
-    // get name of the city
+    /// get name of the city
     private func weatherCityName(list: ListDecodable, cityNameLabel: UILabel) {
         let weatherCityName = list.name
         cityNameLabel.text = weatherCityName
     }
     
-    // update the weather to New York and Auvers-Sur-Oise
+    /// update the weather to New York and Auvers-Sur-Oise
     private func updateWeather(weatherUpdated: WeatherAPI) {
         // Weather to New York
         let weatherNY = weatherUpdated.list[1]

@@ -10,7 +10,8 @@ import Foundation
 
 class TranslationService {
     
-    // MARK: Vars
+    // MARK: - Vars
+
     private var task: URLSessionDataTask?
     private var session: URLSession
     
@@ -23,11 +24,15 @@ class TranslationService {
     private let keyTranslation = valueForAPIKey(named: "API_GoogleTranslation")
 
     // MARK: - Methods
+
+    /// network call to get the translation
     func getTranslation(textToTranslate: String,
                         target: String,
                         source: String,
                         callBack: @escaping (Bool, Translations?) -> Void) {
-        let request = createTranslationRequest(textToTranslate: textToTranslate, target: target, source: source)
+        guard let request = createTranslationRequest(textToTranslate: textToTranslate,
+                                                     target: target,
+                                                     source: source) else { return }
         print(request)
         
         task?.cancel()
@@ -43,7 +48,7 @@ class TranslationService {
                     return
                 }
                 
-                // MARK: - JSON decodable
+                // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Translations.self, from: data) else {
                     callBack(false, nil)
                     return
@@ -54,10 +59,8 @@ class TranslationService {
         task?.resume()
     }
     
-    private func createTranslationRequest(textToTranslate: String, target: String, source: String) -> URLRequest {
-        guard let url = URL(string: baseUrl) else {
-            fatalError("Url is not found")
-        }
+    private func createTranslationRequest(textToTranslate: String, target: String, source: String) -> URLRequest? {
+        guard let url = URL(string: baseUrl) else { return nil }
         
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -67,9 +70,9 @@ class TranslationService {
         return request
     }
     
-    // get language test
+    /// network call to get the languages
     func getLanguage(callBack: @escaping (Bool, Languages?) -> Void) {
-        let url = createLanguageUrl()
+        guard let url = createLanguageUrl() else { return }
         print(url)
         
         task?.cancel()
@@ -85,7 +88,7 @@ class TranslationService {
                     return
                 }
                 
-                // MARK: - JSON decodable
+                // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Languages.self, from: data) else {
                     callBack(false, nil)
                     return
@@ -96,11 +99,9 @@ class TranslationService {
         task?.resume()
     }
 
-    private func createLanguageUrl() -> URL {
-        let languageUrl = "/languages?key=\(keyTranslation)&target=fr"
-        guard let url = URL(string: baseUrl + languageUrl) else {
-            fatalError("Url is not found")
-        }
+    private func createLanguageUrl() -> URL? {
+        let languageUrl = "/languages?key=\(keyTranslation)&target=en"
+        guard let url = URL(string: baseUrl + languageUrl) else { return nil }
         return url
     }
 }

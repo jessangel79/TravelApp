@@ -9,16 +9,19 @@
 import Foundation
 
 // MARK: - Languages
+
 struct Languages: Decodable {
     let data: LanguageData
 }
 
 // MARK: - LanguageData
+
 struct LanguageData: Decodable {
     let languages: [Language]
 }
 
 // MARK: - Language
+
 struct Language: Decodable {
     let language, name: String
 }

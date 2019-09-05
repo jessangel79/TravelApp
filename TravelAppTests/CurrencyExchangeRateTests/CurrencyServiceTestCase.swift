@@ -12,6 +12,7 @@ import XCTest
 class CurrencyServiceTestCase: XCTestCase {
     
     // MARK: - Tests getCurrency
+    
     func testGetCurrencyShouldPostFailedCallbackIfError() {
         // Given
         let currencyService = CurrencyService(

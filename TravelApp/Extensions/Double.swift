@@ -1,5 +1,5 @@
 //
-//  ExtensionDouble.swift
+//  Double.swift
 //  TravelApp
 //
 //  Created by Angelique Babin on 30/08/2019.
@@ -7,6 +7,8 @@
 //
 
 import Foundation
+
+// MARK: - Extension to round to a decimal number chosen after the comma
 
 extension Double {
     func roundToDecimal(_ fractionDigits: Int) -> Double {

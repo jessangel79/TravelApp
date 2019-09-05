@@ -25,10 +25,8 @@
 		3AB7189022F34B9100348085 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3AB7188F22F34B9100348085 /* Assets.xcassets */; };
 		3AB7189322F34B9100348085 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AB7189122F34B9100348085 /* LaunchScreen.storyboard */; };
 		3AC4A60D2316869F004B1122 /* TranslationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC4A60C2316869F004B1122 /* TranslationService.swift */; };
-		3AC4A6122316EC89004B1122 /* CustomUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC4A6112316EC89004B1122 /* CustomUIViewController.swift */; };
-		3AC4A6142316ED0B004B1122 /* ActivityIndicatorUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC4A6132316ED0B004B1122 /* ActivityIndicatorUIViewController.swift */; };
-		3AC4A6162316ED2B004B1122 /* AlertVCUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC4A6152316ED2B004B1122 /* AlertVCUIViewController.swift */; };
-		3ACBD4F0231977E400F10DDE /* ExtensionDouble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACBD4EF231977E400F10DDE /* ExtensionDouble.swift */; };
+		3AC4A6122316EC89004B1122 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC4A6112316EC89004B1122 /* UIViewController.swift */; };
+		3ACBD4F0231977E400F10DDE /* Double.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACBD4EF231977E400F10DDE /* Double.swift */; };
 		3ACBD4F22319812900F10DDE /* TranslationServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACBD4F12319812900F10DDE /* TranslationServiceTestCase.swift */; };
 		3ACF379F230D48CB002CC67D /* Weather.json in Resources */ = {isa = PBXBuildFile; fileRef = 3ACF379E230D48CB002CC67D /* Weather.json */; };
 		3AE564C322F878D400BE5B6C /* ExchangeFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE564C222F878D400BE5B6C /* ExchangeFormViewController.swift */; };
@@ -74,10 +72,8 @@
 		3AB7189922F34B9100348085 /* TravelAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TravelAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3AB7189F22F34B9100348085 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3AC4A60C2316869F004B1122 /* TranslationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationService.swift; sourceTree = "<group>"; };
-		3AC4A6112316EC89004B1122 /* CustomUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIViewController.swift; sourceTree = "<group>"; };
-		3AC4A6132316ED0B004B1122 /* ActivityIndicatorUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorUIViewController.swift; sourceTree = "<group>"; };
-		3AC4A6152316ED2B004B1122 /* AlertVCUIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertVCUIViewController.swift; sourceTree = "<group>"; };
-		3ACBD4EF231977E400F10DDE /* ExtensionDouble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDouble.swift; sourceTree = "<group>"; };
+		3AC4A6112316EC89004B1122 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		3ACBD4EF231977E400F10DDE /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		3ACBD4F12319812900F10DDE /* TranslationServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationServiceTestCase.swift; sourceTree = "<group>"; };
 		3ACF379E230D48CB002CC67D /* Weather.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Weather.json; sourceTree = "<group>"; };
 		3AE564C222F878D400BE5B6C /* ExchangeFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExchangeFormViewController.swift; sourceTree = "<group>"; };
@@ -254,10 +250,8 @@
 		3AC4A60E2316EBAF004B1122 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				3AC4A6112316EC89004B1122 /* CustomUIViewController.swift */,
-				3AC4A6132316ED0B004B1122 /* ActivityIndicatorUIViewController.swift */,
-				3AC4A6152316ED2B004B1122 /* AlertVCUIViewController.swift */,
-				3ACBD4EF231977E400F10DDE /* ExtensionDouble.swift */,
+				3AC4A6112316EC89004B1122 /* UIViewController.swift */,
+				3ACBD4EF231977E400F10DDE /* Double.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -393,18 +387,16 @@
 			files = (
 				3AB7188922F34B9000348085 /* AppDelegate.swift in Sources */,
 				3A067B91231E9659005CC191 /* LanguageChosen.swift in Sources */,
-				3AC4A6142316ED0B004B1122 /* ActivityIndicatorUIViewController.swift in Sources */,
 				3A143CDA230B15C000C531E9 /* WeatherFormViewController.swift in Sources */,
 				3AEABC1A230C4CF6005DA02E /* ApiKeys.swift in Sources */,
 				3AF7346022F9E4B9003BFB73 /* Currency.swift in Sources */,
 				3A9A45ED2314276C00B5D7BC /* Languages.swift in Sources */,
-				3AC4A6162316ED2B004B1122 /* AlertVCUIViewController.swift in Sources */,
 				3AF7346222F9E7D2003BFB73 /* CurrencyService.swift in Sources */,
 				3AF7346422F9EB93003BFB73 /* Rates.swift in Sources */,
-				3ACBD4F0231977E400F10DDE /* ExtensionDouble.swift in Sources */,
+				3ACBD4F0231977E400F10DDE /* Double.swift in Sources */,
 				3AC4A60D2316869F004B1122 /* TranslationService.swift in Sources */,
 				3AEABC16230C35C7005DA02E /* WeatherAPI.swift in Sources */,
-				3AC4A6122316EC89004B1122 /* CustomUIViewController.swift in Sources */,
+				3AC4A6122316EC89004B1122 /* UIViewController.swift in Sources */,
 				3AE564C322F878D400BE5B6C /* ExchangeFormViewController.swift in Sources */,
 				3A9A45E923141AAA00B5D7BC /* Translations.swift in Sources */,
 				3AEABC14230BFFB2005DA02E /* WeatherService.swift in Sources */,

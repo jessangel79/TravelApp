@@ -11,11 +11,13 @@ import UIKit
 class ExchangeFormViewController: UIViewController {
     
     // MARK: - Properties
-    var symbols = [String]()
-    var symbolPicked = String()
-    let currencyService = CurrencyService()
+    
+    private var symbols = [String]()
+    private var symbolPicked = String()
+    private let currencyService = CurrencyService()
     
     // MARK: - Outlets
+    
     @IBOutlet weak var amountTextField: UITextField!
     @IBOutlet weak var currencyPickerViewer: UIPickerView!
     @IBOutlet weak var convertedAmountLabel: UILabel!
@@ -24,6 +26,7 @@ class ExchangeFormViewController: UIViewController {
 }
 
 // MARK: - Keyboard
+
 extension ExchangeFormViewController: UITextFieldDelegate {
     @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         amountTextField.resignFirstResponder()
@@ -31,6 +34,7 @@ extension ExchangeFormViewController: UITextFieldDelegate {
 }
 
 // MARK: - Validate
+
 extension ExchangeFormViewController {
     
     @IBAction func tapConvertButton() {
@@ -41,15 +45,15 @@ extension ExchangeFormViewController {
         getRate()
     }
     
-    // MARK: - ViewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-        customInterface(label: convertedAmountLabel, textField: amountTextField, button: convertButton)
+        customInterfaceExchangeRate(label: convertedAmountLabel, textField: amountTextField, button: convertButton)
         currencyPickerViewer.isHidden = true
         getCurrency()
     }
     
     // MARK: - Methods
+    
     private func getCurrency() {
         currencyService.getCurrency { (success, symbols) in
             self.toggleActivityIndicator(shown: false,
@@ -71,7 +75,7 @@ extension ExchangeFormViewController {
         self.symbolPicked = currency
     }
     
-    // Reorganize the list in alphabetical order
+    /// Reorganize the list in alphabetical order
     private func orderSymbolsByAlpha(symbols: [String]) {
         let symbolA = symbols.filter({ Array($0)[0] == "A" })
         let symbolU = symbols.filter({ Array($0)[0] == "U" })
@@ -100,6 +104,7 @@ extension ExchangeFormViewController {
 }
 
 // MARK: - PickerView
+
 extension ExchangeFormViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1

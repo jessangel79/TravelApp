@@ -9,16 +9,19 @@
 import Foundation
 
 // MARK: - Translations
+
 struct Translations: Decodable {
     let data: TranslationData
 }
 
 // MARK: - TranslationData
+
 struct TranslationData: Decodable {
     let translations: [TranslationText]
 }
 
 // MARK: - TranslationText
+
 struct TranslationText: Decodable {
     let translatedText: String
 }

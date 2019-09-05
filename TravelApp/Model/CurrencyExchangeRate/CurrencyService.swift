@@ -10,9 +10,8 @@ import Foundation
 
 class CurrencyService {
 
-    // MARK: Vars
-//    static var shared = CurrencyService()
-//    private init() {}
+    // MARK: - Vars
+    
     private var task: URLSessionDataTask?
     
     private var session: URLSession
@@ -21,22 +20,14 @@ class CurrencyService {
         self.session = session
     }
     
-//    private static let currencyUrl = URL(string:
-//        "http://data.fixer.io/api/symbols?access_key=1398c31984a68b64b7fea3bcb147c54d")!
-//
-//    private static let rateUrl = URL(string:
-//        "http://data.fixer.io/api/latest?access_key=1398c31984a68b64b7fea3bcb147c54d")!
-    
     private let currencyUrl = "http://data.fixer.io/api/symbols?access_key="
     private let rateUrl = "http://data.fixer.io/api/latest?access_key="
     private let keyExchange = valueForAPIKey(named: "API_Fixer")
     
     // MARK: - Methods
+    
     func getCurrency(callBack: @escaping (Bool, [String]?) -> Void) {
-        guard let url = URL(string: currencyUrl + keyExchange) else {
-            callBack(false, nil)
-            return
-        }
+        guard let url = URL(string: currencyUrl + keyExchange) else { return }
 
         task?.cancel()
         
@@ -51,7 +42,7 @@ class CurrencyService {
                     return
                 }
                 
-                // MARK: - JSON decodable
+                // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Currency.self, from: data) else {
                     callBack(false, nil)
                     return
@@ -64,10 +55,7 @@ class CurrencyService {
     }
     
     func getRate(symbol: String, callBack: @escaping (Bool, Double?) -> Void) {
-        guard let url = URL(string: rateUrl + keyExchange) else {
-            callBack(false, nil)
-            return
-        }
+        guard let url = URL(string: rateUrl + keyExchange) else { return }
         
         task?.cancel()
         
@@ -82,7 +70,7 @@ class CurrencyService {
                     return
                 }
                 
-                // MARK: - JSON decodable
+                // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Rates.self, from: data) else {
                     callBack(false, nil)
                     return
