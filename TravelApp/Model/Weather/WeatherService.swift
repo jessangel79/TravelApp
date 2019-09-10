@@ -25,6 +25,7 @@ class WeatherService {
     
     // MARK: - Methods
     
+    /// network call to get the weather
     func getWeather(callBack: @escaping (Bool, WeatherAPI?) -> Void) {
         guard let url = URL(string: baseUrl + keyWeather) else { return }
         

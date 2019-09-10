@@ -534,7 +534,7 @@
                         <outlet property="amountTextField" destination="ehW-OW-DKv" id="85w-SD-8nu"/>
                         <outlet property="convertButton" destination="GVn-sm-gwo" id="SJl-Mm-odi"/>
                         <outlet property="convertedAmountLabel" destination="s2B-Fs-Cu2" id="e1b-S3-EcW"/>
-                        <outlet property="currencyPickerViewer" destination="bJu-g8-OO9" id="fvm-Os-kJk"/>
+                        <outlet property="currencyPickerView" destination="bJu-g8-OO9" id="fvm-Os-kJk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ok1-lU-h6q" userLabel="First Responder" sceneMemberID="firstResponder"/>

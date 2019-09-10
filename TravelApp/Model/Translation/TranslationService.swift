@@ -33,7 +33,6 @@ class TranslationService {
         guard let request = createTranslationRequest(textToTranslate: textToTranslate,
                                                      target: target,
                                                      source: source) else { return }
-        print(request)
         
         task?.cancel()
         
@@ -73,7 +72,6 @@ class TranslationService {
     /// network call to get the languages
     func getLanguage(callBack: @escaping (Bool, Languages?) -> Void) {
         guard let url = createLanguageUrl() else { return }
-        print(url)
         
         task?.cancel()
         

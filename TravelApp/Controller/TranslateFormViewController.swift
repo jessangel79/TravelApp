@@ -108,7 +108,6 @@ extension TranslateFormViewController {
     func getLanguages(textToTranslate: String, translation: String) {
         translationService.getLanguage { (success, languages) in
             if success, let languages = languages {
-                print(languages)
                 self.updateLanguage(languages: languages, textToTranslate: textToTranslate, translation: translation)
             } else {
                 self.presentAlert(message: "The language download failed.")

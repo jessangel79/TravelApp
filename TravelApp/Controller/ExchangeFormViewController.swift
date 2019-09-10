@@ -19,7 +19,7 @@ class ExchangeFormViewController: UIViewController {
     // MARK: - Outlets
     
     @IBOutlet weak var amountTextField: UITextField!
-    @IBOutlet weak var currencyPickerViewer: UIPickerView!
+    @IBOutlet weak var currencyPickerView: UIPickerView!
     @IBOutlet weak var convertedAmountLabel: UILabel!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var convertButton: UIButton!
@@ -48,12 +48,13 @@ extension ExchangeFormViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         customInterfaceExchangeRate(label: convertedAmountLabel, textField: amountTextField, button: convertButton)
-        currencyPickerViewer.isHidden = true
+        currencyPickerView.isHidden = true
         getCurrency()
     }
     
     // MARK: - Methods
     
+    /// get the currencies
     private func getCurrency() {
         currencyService.getCurrency { (success, symbols) in
             self.toggleActivityIndicator(shown: false,
@@ -65,12 +66,13 @@ extension ExchangeFormViewController {
                 // display an error message
                 self.presentAlert(message: "The symbol of currency download failed.")
             }
-            self.currencyPickerViewer.isHidden = false
+            self.currencyPickerView.isHidden = false
         }
     }
     
+    /// get the symbol of the currency selected in the pickerView
     private func symbolSelected() {
-        let currencyIndex = currencyPickerViewer.selectedRow(inComponent: 0)
+        let currencyIndex = currencyPickerView.selectedRow(inComponent: 0)
         let currency = symbols[currencyIndex]
         self.symbolPicked = currency
     }
@@ -84,12 +86,14 @@ extension ExchangeFormViewController {
         self.symbols = symbolByAlpha.sorted()
     }
     
+    /// get the exchange rate with the symbol picked, calculate and display the result
     private func getRate() {
         currencyService.getRate(symbol: symbolPicked) { (success, rate) in
             self.toggleActivityIndicator(shown: false,
                                          activityIndicator: self.activityIndicator,
                                          validateButton: self.convertButton)
             if success, let rate = rate {
+                print(rate)
                 guard let amount = self.amountTextField?.text else { return }
                 guard let doubleAmount = Double(amount) else { return }
                 let convertedAmount = rate * doubleAmount

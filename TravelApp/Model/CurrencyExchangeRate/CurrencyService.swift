@@ -26,6 +26,7 @@ class CurrencyService {
     
     // MARK: - Methods
     
+    /// network call to get the currency
     func getCurrency(callBack: @escaping (Bool, [String]?) -> Void) {
         guard let url = URL(string: currencyUrl + keyExchange) else { return }
 
@@ -54,6 +55,7 @@ class CurrencyService {
         task?.resume()
     }
     
+    /// network call to get the exchange rate
     func getRate(symbol: String, callBack: @escaping (Bool, Double?) -> Void) {
         guard let url = URL(string: rateUrl + keyExchange) else { return }
         
