@@ -18,13 +18,11 @@ class TranslationService {
     init(session: URLSession = URLSession(configuration: .default)) {
         self.session = session
     }
-    
-    private let baseUrl = "https://translation.googleapis.com/language/translate/v2"
-    
+        
     private let keyTranslation = valueForAPIKey(named: "API_GoogleTranslation")
 
     // MARK: - Methods
-
+    
     /// network call to get the translation
     func getTranslation(textToTranslate: String,
                         target: String,
@@ -36,7 +34,8 @@ class TranslationService {
         
         task?.cancel()
         
-        task = session.dataTask(with: request) { (data, response, error) in
+        task = session.dataTask(with: request as URLRequest,
+                                        completionHandler: { (data, response, error) -> Void in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callBack(false, nil)
@@ -46,7 +45,7 @@ class TranslationService {
                     callBack(false, nil)
                     return
                 }
-                
+
                 // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Translations.self, from: data) else {
                     callBack(false, nil)
@@ -54,28 +53,41 @@ class TranslationService {
                 }
                 callBack(true, responseJSON)
             }
-        }
+        })
         task?.resume()
     }
     
-    private func createTranslationRequest(textToTranslate: String, target: String, source: String) -> URLRequest? {
-        guard let url = URL(string: baseUrl) else { return nil }
-        
-        var request = URLRequest(url: url)
+    private func createTranslationRequest(textToTranslate: String,
+                                          target: String,
+                                          source: String) -> NSMutableURLRequest? {
+        let headers = [
+            "content-type": "application/x-www-form-urlencoded",
+            "accept-encoding": "application/gzip",
+            "x-rapidapi-host": "google-translate1.p.rapidapi.com",
+            "x-rapidapi-key": keyTranslation
+        ]
+
+        let encodingUtf8 = String.Encoding.utf8
+        let postData = NSMutableData(data: "q=\(textToTranslate)".data(using: encodingUtf8) ?? Data())
+        postData.append("&source=\(source)".data(using: encodingUtf8) ?? Data())
+        postData.append("&target=\(target)".data(using: encodingUtf8) ?? Data())
+
+        guard let url = NSURL(string: "https://rapidapi.p.rapidapi.com/language/translate/v2") else { return nil }
+        let request = NSMutableURLRequest(url: url as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
         request.httpMethod = "POST"
-        let body = "key=\(keyTranslation)&source=\(source)&target=\(target)&format=text&q=\(textToTranslate)"
-        request.httpBody = body.data(using: .utf8)
-        
+        request.allHTTPHeaderFields = headers
+        request.httpBody = postData as Data
         return request
     }
-    
+
     /// network call to get the languages
     func getLanguage(callBack: @escaping (Bool, Languages?) -> Void) {
-        guard let url = createLanguageUrl() else { return }
+        guard let request =  createLanguageRequest() else { return }
         
         task?.cancel()
-        
-        task = session.dataTask(with: url) { (data, response, error) in
+
+        task = session.dataTask(with: request as URLRequest,
+                                        completionHandler: { (data, response, error) -> Void in
             DispatchQueue.main.async {
                 guard let data = data, error == nil else {
                     callBack(false, nil)
@@ -85,7 +97,7 @@ class TranslationService {
                     callBack(false, nil)
                     return
                 }
-                
+
                 // JSON decodable
                 guard let responseJSON = try? JSONDecoder().decode(Languages.self, from: data) else {
                     callBack(false, nil)
@@ -93,13 +105,23 @@ class TranslationService {
                 }
                 callBack(true, responseJSON)
             }
-        }
+        })
         task?.resume()
-    }
 
-    private func createLanguageUrl() -> URL? {
-        let languageUrl = "/languages?key=\(keyTranslation)&target=en"
-        guard let url = URL(string: baseUrl + languageUrl) else { return nil }
-        return url
+    }
+    
+    private func createLanguageRequest() -> NSMutableURLRequest? {
+        let headers = [
+            "accept-encoding": "application/gzip",
+            "x-rapidapi-host": "google-translate1.p.rapidapi.com",
+            "x-rapidapi-key": keyTranslation
+        ]
+        guard let url = NSURL(
+                string: "https://rapidapi.p.rapidapi.com/language/translate/v2/languages"
+        ) else { return nil }
+        let request = NSMutableURLRequest(url: url as URL, cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
+        request.httpMethod = "GET"
+        request.allHTTPHeaderFields = headers
+        return request
     }
 }

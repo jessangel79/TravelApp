@@ -221,25 +221,6 @@ class TranslationServiceTestCase: XCTestCase {
             // Then
             XCTAssertTrue(success)
             XCTAssertNotNil(languages)
-            
-            let languageTextToTranslate = "fr"
-            let languageTranslation = "en"
-            var nameTextToTranslateTest = ""
-            var nameTranslationTest = ""
-            let languageTextToTranslateTest = "French"
-            let languageTranslationTest = "English"
-            guard let languagesArray = languages?.data.languages else { return }
-            for language in languagesArray {
-                if language.language == languageTextToTranslate {
-                    nameTextToTranslateTest = language.name
-                }
-                if language.language == languageTranslation {
-                    nameTranslationTest = language.name
-                }
-            }
-            
-            XCTAssertEqual(nameTextToTranslateTest, languageTextToTranslateTest)
-            XCTAssertEqual(nameTranslationTest, languageTranslationTest)
             expectation.fulfill()
         }
 

@@ -17,6 +17,13 @@ class TranslateFormViewController: UIViewController {
     private let frenchLanguage = LanguageChosen.french.language()
     private let englishWelcome = LanguageChosen.english.welcome()
     private let englishLanguage = LanguageChosen.english.language()
+    private let germanLanguage = LanguageChosen.german.language()
+    private let germanWelcome = LanguageChosen.german.welcome()
+    private let frenchToDisplay = LanguageChosen.french.languageSelected()
+    private let englishToDisplay = LanguageChosen.english.languageSelected()
+    private let germanToDisplay = LanguageChosen.german.languageSelected()
+    
+    private var languages: Languages?
     
     // MARK: - Outlets
     
@@ -52,20 +59,40 @@ extension TranslateFormViewController {
     }
     
     // BONUS : allowing the user to choose a translation language
-    @IBAction func selectLanguage(_ sender: Any) {
+    @IBAction func selectLanguage(_ sender: UISegmentedControl) {
         switch choiceLanguageSegmentedControl.selectedSegmentIndex {
         case 0:
-            refreshText(translateBase: frenchWelcome,
-                        translationBase: englishWelcome,
-                        textToTranslate: frenchLanguage,
-                        translation: englishLanguage)
+            let translationParametersFrToEn = TranslationParemeters(translateBase: frenchWelcome,
+                                                              translationBase: englishWelcome,
+                                                              textToTranslate: frenchLanguage,
+                                                              translation: englishLanguage,
+                                                              textToTranslateToDisplay: frenchToDisplay,
+                                                              translationToDisplay: englishToDisplay)
+            refreshText(translationParametersFrToEn)
         case 1:
-            refreshText(translateBase: englishWelcome,
-                        translationBase: frenchWelcome,
-                        textToTranslate: englishLanguage,
-                        translation: frenchLanguage)
+            let translationParametersEnToFr = TranslationParemeters(translateBase: englishWelcome,
+                                                              translationBase: frenchWelcome,
+                                                              textToTranslate: englishLanguage,
+                                                              translation: frenchLanguage,
+                                                              textToTranslateToDisplay: englishToDisplay,
+                                                              translationToDisplay: frenchToDisplay)
+            refreshText(translationParametersEnToFr)
+        case 2:
+            let translationParametersFrToGe = TranslationParemeters(translateBase: frenchWelcome,
+                                                              translationBase: germanWelcome,
+                                                              textToTranslate: frenchLanguage,
+                                                              translation: germanLanguage,
+                                                              textToTranslateToDisplay: frenchToDisplay,
+                                                              translationToDisplay: germanToDisplay)
+            refreshText(translationParametersFrToGe)
         default:
-            presentAlert(message: "An error occurred")
+            let translationParametersGeToFr = TranslationParemeters(translateBase: germanWelcome,
+                                                              translationBase: frenchWelcome,
+                                                              textToTranslate: germanLanguage,
+                                                              translation: frenchLanguage,
+                                                              textToTranslateToDisplay: germanToDisplay,
+                                                              translationToDisplay: frenchToDisplay)
+            refreshText(translationParametersGeToFr)
         }
     }
     
@@ -74,10 +101,13 @@ extension TranslateFormViewController {
         customInterfaceTranslation(textView: translationTextView,
                                    textField: translateTextField,
                                    button: translationButton)
-        refreshText(translateBase: frenchWelcome,
-                    translationBase: englishWelcome,
-                    textToTranslate: frenchLanguage,
-                    translation: englishLanguage)
+        let translationParametersFrench = TranslationParemeters(translateBase: frenchWelcome,
+                                                          translationBase: englishWelcome,
+                                                          textToTranslate: frenchLanguage,
+                                                          translation: englishLanguage,
+                                                          textToTranslateToDisplay: frenchToDisplay,
+                                                          translationToDisplay: englishToDisplay)
+        refreshText(translationParametersFrench)
     }
     
     // MARK: - Methods
@@ -108,22 +138,9 @@ extension TranslateFormViewController {
     func getLanguages(textToTranslate: String, translation: String) {
         translationService.getLanguage { (success, languages) in
             if success, let languages = languages {
-                self.updateLanguage(languages: languages, textToTranslate: textToTranslate, translation: translation)
+                self.languages = languages
             } else {
                 self.presentAlert(message: "The language download failed.")
-            }
-        }
-    }
-    
-    /// display the languages
-    private func updateLanguage(languages: Languages, textToTranslate: String, translation: String) {
-        let languages = languages.data.languages
-        for language in languages {
-            if language.language == textToTranslate {
-                textToTranslateLabel.text = language.name
-            }
-            if language.language == translation {
-                languageTranslationLabel.text = language.name
             }
         }
     }
@@ -135,19 +152,21 @@ extension TranslateFormViewController {
             getTranslation(target: englishLanguage, source: frenchLanguage)
         case 1:
             getTranslation(target: frenchLanguage, source: englishLanguage)
+        case 2:
+            getTranslation(target: germanLanguage, source: frenchLanguage)
         default:
-            presentAlert(message: "An error occurred.")
+            getTranslation(target: frenchLanguage, source: germanLanguage)
         }
     }
 
     /// display welcome basic text and get the languages selected
-    private func refreshText(translateBase: String,
-                             translationBase: String,
-                             textToTranslate: String,
-                             translation: String) {
+    private func refreshText(_ translationsParameters: TranslationParemeters) {
         translateTextField.text = String()
-        translateTextField.placeholder = translateBase
-        translationTextView.text = translationBase
-        getLanguages(textToTranslate: textToTranslate, translation: translation)
+        translateTextField.placeholder = translationsParameters.translateBase
+        translationTextView.text = translationsParameters.translationBase
+        textToTranslateLabel.text = translationsParameters.textToTranslateToDisplay
+        languageTranslationLabel.text = translationsParameters.translationToDisplay
+        getLanguages(textToTranslate: translationsParameters.textToTranslate,
+                     translation: translationsParameters.translation)
     }
 }

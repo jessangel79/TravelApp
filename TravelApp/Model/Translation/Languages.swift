@@ -23,5 +23,24 @@ struct LanguageData: Decodable {
 // MARK: - Language
 
 struct Language: Decodable {
-    let language, name: String
+    let language: String
 }
+
+// old api google
+// MARK: - Languages
+
+//struct Languages: Decodable {
+//    let data: LanguageData
+//}
+
+// MARK: - LanguageData
+
+//struct LanguageData: Decodable {
+//    let languages: [Language]
+//}
+
+// MARK: - Language
+
+//struct Language: Decodable {
+//    let language, name: String
+//}

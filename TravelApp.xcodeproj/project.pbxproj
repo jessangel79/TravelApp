@@ -10,6 +10,7 @@
 		3A012ED3230EE7D1004EC3F0 /* WeatherServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A012ED2230EE7D1004EC3F0 /* WeatherServiceTestCase.swift */; };
 		3A067B91231E9659005CC191 /* LanguageChosen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A067B90231E9659005CC191 /* LanguageChosen.swift */; };
 		3A143CDA230B15C000C531E9 /* WeatherFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A143CD9230B15C000C531E9 /* WeatherFormViewController.swift */; };
+		3A3849BE2541D61500322817 /* TranslationParemeters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A3849BD2541D61500322817 /* TranslationParemeters.swift */; };
 		3A4C83A922FC6562003EFC20 /* CurrencyServiceTestCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4C83A822FC6562003EFC20 /* CurrencyServiceTestCase.swift */; };
 		3A4C83AB22FC65E2003EFC20 /* Currency.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C83AA22FC65E2003EFC20 /* Currency.json */; };
 		3A4C83AD22FC66E0003EFC20 /* Rates.json in Resources */ = {isa = PBXBuildFile; fileRef = 3A4C83AC22FC66E0003EFC20 /* Rates.json */; };
@@ -53,6 +54,7 @@
 		3A012ED2230EE7D1004EC3F0 /* WeatherServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherServiceTestCase.swift; sourceTree = "<group>"; };
 		3A067B90231E9659005CC191 /* LanguageChosen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageChosen.swift; sourceTree = "<group>"; };
 		3A143CD9230B15C000C531E9 /* WeatherFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherFormViewController.swift; sourceTree = "<group>"; };
+		3A3849BD2541D61500322817 /* TranslationParemeters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslationParemeters.swift; sourceTree = "<group>"; };
 		3A4C83A822FC6562003EFC20 /* CurrencyServiceTestCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyServiceTestCase.swift; sourceTree = "<group>"; };
 		3A4C83AA22FC65E2003EFC20 /* Currency.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Currency.json; sourceTree = "<group>"; };
 		3A4C83AC22FC66E0003EFC20 /* Rates.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Rates.json; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				3A9A45E823141AAA00B5D7BC /* Translations.swift */,
 				3A9A45EC2314276C00B5D7BC /* Languages.swift */,
 				3A067B90231E9659005CC191 /* LanguageChosen.swift */,
+				3A3849BD2541D61500322817 /* TranslationParemeters.swift */,
 			);
 			path = Translation;
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AB7188922F34B9000348085 /* AppDelegate.swift in Sources */,
+				3A3849BE2541D61500322817 /* TranslationParemeters.swift in Sources */,
 				3A067B91231E9659005CC191 /* LanguageChosen.swift in Sources */,
 				3A143CDA230B15C000C531E9 /* WeatherFormViewController.swift in Sources */,
 				3AEABC1A230C4CF6005DA02E /* ApiKeys.swift in Sources */,
@@ -566,6 +570,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TravelApp/TravelAppDebug.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4ZG3MAQH;
 				INFOPLIST_FILE = "TravelApp/Supporting Files/Info.plist";
@@ -584,6 +590,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TravelApp/TravelApp.entitlements;
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AS4ZG3MAQH;
 				INFOPLIST_FILE = "TravelApp/Supporting Files/Info.plist";

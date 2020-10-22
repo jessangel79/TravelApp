@@ -13,6 +13,7 @@ import Foundation
 enum LanguageChosen: String {
     case french = "fr"
     case english = "en"
+    case german = "de"
     
     func language() -> String {
         return self.rawValue
@@ -26,6 +27,21 @@ enum LanguageChosen: String {
             return "Bonjour !"
         case .english:
             return "Hello !"
+        case .german:
+            return "Guten tag !"
+        }
+    }
+    
+    func languageSelected() -> String {
+        guard let languageChosen = LanguageChosen(rawValue: language()) else { return "" }
+        
+        switch languageChosen {
+        case .french:
+            return "French"
+        case .english:
+            return "English"
+        case .german:
+            return "German"
         }
     }
 }

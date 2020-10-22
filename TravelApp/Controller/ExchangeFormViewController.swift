@@ -80,9 +80,10 @@ extension ExchangeFormViewController {
     /// Reorganize the list in alphabetical order
     private func orderSymbolsByAlpha(symbols: [String]) {
         let symbolA = symbols.filter({ Array($0)[0] == "A" })
-        let symbolU = symbols.filter({ Array($0)[0] == "U" })
+        let symbolC = symbols.filter({ Array($0)[0] == "C" })
         let symbolE = symbols.filter({ Array($0)[0] == "E" })
-        let symbolByAlpha = symbolA + symbolE + symbolU
+        let symbolU = symbols.filter({ Array($0)[0] == "U" })
+        let symbolByAlpha = symbolA + symbolC + symbolE + symbolU
         self.symbols = symbolByAlpha.sorted()
     }
     
